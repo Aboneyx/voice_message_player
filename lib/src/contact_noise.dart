@@ -19,7 +19,7 @@ class ContactNoise extends StatelessWidget {
     final double height = 5.74.w() * math.Random().nextDouble() + .26.w();
     return Container(
       margin: EdgeInsets.symmetric(horizontal: .2.w()),
-      width: /* .56.w() */ double.infinity,
+      width: .100.w(),
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(1000),
