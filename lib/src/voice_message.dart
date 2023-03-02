@@ -80,8 +80,8 @@ class _VoiceMessageState extends State<VoiceMessage>
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            // _playButton(context),
-            // SizedBox(width: 3.w()),
+            _playButton(context),
+            SizedBox(width: 3.w()),
             _durationWithNoise(context),
             SizedBox(width: 2.2.w()),
 
@@ -133,10 +133,7 @@ class _VoiceMessageState extends State<VoiceMessage>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _playButton(context),
               _noise(context),
             ],
           ),
