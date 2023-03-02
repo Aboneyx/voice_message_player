@@ -31,12 +31,7 @@ class VoiceMessage extends StatefulWidget {
 
   final String audioSrc;
   final int noiseCount;
-  final Color meBgColor,
-      meFgColor,
-      contactBgColor,
-      contactFgColor,
-      mePlayIconColor,
-      contactPlayIconColor;
+  final Color meBgColor, meFgColor, contactBgColor, contactFgColor, mePlayIconColor, contactPlayIconColor;
   final bool played, me;
   Function()? onPlay;
 
@@ -44,8 +39,7 @@ class VoiceMessage extends StatefulWidget {
   _VoiceMessageState createState() => _VoiceMessageState();
 }
 
-class _VoiceMessageState extends State<VoiceMessage>
-    with SingleTickerProviderStateMixin {
+class _VoiceMessageState extends State<VoiceMessage> with SingleTickerProviderStateMixin {
   final AudioPlayer _player = AudioPlayer();
   final double maxNoiseHeight = 6.w(), noiseWidth = 26.5.w();
   Duration? _audioDuration;
@@ -71,10 +65,8 @@ class _VoiceMessageState extends State<VoiceMessage>
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(6.w()),
-          bottomLeft:
-              widget.me ? Radius.circular(6.w()) : Radius.circular(2.w()),
-          bottomRight:
-              !widget.me ? Radius.circular(6.w()) : Radius.circular(1.2.w()),
+          bottomLeft: widget.me ? Radius.circular(6.w()) : Radius.circular(2.w()),
+          bottomRight: !widget.me ? Radius.circular(6.w()) : Radius.circular(1.2.w()),
           topRight: Radius.circular(6.w()),
         ),
         color: widget.me ? widget.meBgColor : widget.contactBgColor,
@@ -106,8 +98,7 @@ class _VoiceMessageState extends State<VoiceMessage>
           width: 8.w(),
           height: 8.w(),
           child: InkWell(
-            onTap: () =>
-                !_audioConfigurationDone ? null : _changePlayingStatus(),
+            onTap: () => !_audioConfigurationDone ? null : _changePlayingStatus(),
             child: !_audioConfigurationDone
                 ? Container(
                     padding: const EdgeInsets.all(8),
@@ -115,15 +106,12 @@ class _VoiceMessageState extends State<VoiceMessage>
                     height: 0,
                     child: CircularProgressIndicator(
                       strokeWidth: 1,
-                      color:
-                          widget.me ? widget.meFgColor : widget.contactFgColor,
+                      color: widget.me ? widget.meFgColor : widget.contactFgColor,
                     ),
                   )
                 : Icon(
                     _isPlaying ? Icons.pause : Icons.play_arrow,
-                    color: widget.me
-                        ? widget.mePlayIconColor
-                        : widget.contactPlayIconColor,
+                    color: widget.me ? widget.mePlayIconColor : widget.contactPlayIconColor,
                     size: 5.w(),
                   ),
           ),
@@ -137,9 +125,7 @@ class _VoiceMessageState extends State<VoiceMessage>
           SizedBox(height: .3.w()),
           Row(
             children: [
-              if (!widget.played)
-                Widgets.circle(context, 1.w(),
-                    widget.me ? widget.meFgColor : widget.contactFgColor),
+              if (!widget.played) Widgets.circle(context, 1.w(), widget.me ? widget.meFgColor : widget.contactFgColor),
               SizedBox(width: 1.2.w()),
               Text(
                 _remaingTime,
@@ -176,17 +162,14 @@ class _VoiceMessageState extends State<VoiceMessage>
             widget.me ? const Noises() : const ContactNoise(),
             if (_audioConfigurationDone)
               AnimatedBuilder(
-                animation:
-                    CurvedAnimation(parent: _controller!, curve: Curves.ease),
+                animation: CurvedAnimation(parent: _controller!, curve: Curves.ease),
                 builder: (context, child) {
                   return Positioned(
                     left: _controller!.value,
                     child: Container(
                       width: noiseWidth,
                       height: 6.w(),
-                      color: widget.me
-                          ? widget.meBgColor.withOpacity(.4)
-                          : widget.contactBgColor.withOpacity(.35),
+                      color: widget.me ? widget.meBgColor.withOpacity(.4) : widget.contactBgColor.withOpacity(.35),
                     ),
                   );
                 },
@@ -231,13 +214,18 @@ class _VoiceMessageState extends State<VoiceMessage>
   _setPlayingStatus() => _isPlaying = _playingStatus == 1;
 
   _startPlaying() async {
-    _playingStatus = await _player.play(widget.audioSrc);
+    await _player.play(UrlSource(widget.audioSrc)).whenComplete(() {
+      _playingStatus = 1;
+    });
     _setPlayingStatus();
     _controller!.forward();
   }
 
   _stopPlaying() async {
-    _playingStatus = await _player.pause();
+    await _player.pause().whenComplete(() {
+      _playingStatus = 0;
+    });
+
     _controller!.stop();
   }
 
@@ -272,8 +260,7 @@ class _VoiceMessageState extends State<VoiceMessage>
     _completeAnimationConfiguration();
   }
 
-  void _completeAnimationConfiguration() =>
-      setState(() => _audioConfigurationDone = true);
+  void _completeAnimationConfiguration() => setState(() => _audioConfigurationDone = true);
 
   // void _toggle2x() {
   //   x2 = !x2;
@@ -296,10 +283,9 @@ class _VoiceMessageState extends State<VoiceMessage>
   }
 
   void _listenToRemaningTime() {
-    _player.onAudioPositionChanged.listen((Duration p) {
+    _player.onPositionChanged.listen((Duration p) {
       final _newRemaingTime1 = p.toString().split('.')[0];
-      final _newRemaingTime2 =
-          _newRemaingTime1.substring(_newRemaingTime1.length - 5);
+      final _newRemaingTime2 = _newRemaingTime1.substring(_newRemaingTime1.length - 5);
       if (_newRemaingTime2 != _remaingTime) {
         setState(() => _remaingTime = _newRemaingTime2);
       }
@@ -330,8 +316,7 @@ class CustomTrackShape extends RoundedRectSliderTrackShape {
   }) {
     const double trackHeight = 10;
     final double trackLeft = offset.dx;
-    final double trackTop =
-        offset.dy + (parentBox.size.height - trackHeight) / 2;
+    final double trackTop = offset.dy + (parentBox.size.height - trackHeight) / 2;
     final double trackWidth = parentBox.size.width;
     return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
   }
