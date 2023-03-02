@@ -66,6 +66,7 @@ class _VoiceMessageState extends State<VoiceMessage>
 
   Container _sizerChild(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: .8.w()),
       constraints: BoxConstraints(maxWidth: 100.w() * .7),
       decoration: BoxDecoration(
@@ -250,7 +251,7 @@ class _VoiceMessageState extends State<VoiceMessage>
   void _setDuration() async {
     _audioDuration = await jsAudio.AudioPlayer().setUrl(widget.audioSrc);
     duration = _audioDuration!.inSeconds;
-    maxDurationForSlider = duration + .00;
+    maxDurationForSlider = duration + .0;
 
     /// document will be added
     _controller = AnimationController(
