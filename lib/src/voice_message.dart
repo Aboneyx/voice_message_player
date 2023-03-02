@@ -86,7 +86,8 @@ class _VoiceMessageState extends State<VoiceMessage>
           children: [
             Row(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 _playButton(context),
                 SizedBox(width: 3.w()),
@@ -125,7 +126,7 @@ class _VoiceMessageState extends State<VoiceMessage>
             Row(
               children: [
                 SizedBox(
-                  width: 8.w(),
+                  width: 11.w(),
                 ),
                 if (!widget.played)
                   Widgets.circle(
