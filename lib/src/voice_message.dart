@@ -83,7 +83,7 @@ class _VoiceMessageState extends State<VoiceMessage>
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 4.w(), vertical: 2.8.w()),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           children: [
             _playButton(context),
             SizedBox(width: 3.w()),
