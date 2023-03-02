@@ -73,7 +73,7 @@ class _VoiceMessageState extends State<VoiceMessage>
   Container _sizerChild(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: .8.w()),
+      // padding: EdgeInsets.symmetric(horizontal: .8.w()),
       constraints: BoxConstraints(maxWidth: 100.w() * .7),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(widget.borderRadius ?? 8),
