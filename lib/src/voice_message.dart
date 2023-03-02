@@ -134,6 +134,7 @@ class _VoiceMessageState extends State<VoiceMessage>
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _playButton(context),
               _noise(context),
