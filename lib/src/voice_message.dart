@@ -142,7 +142,7 @@ class _VoiceMessageState extends State<VoiceMessage>
                     widget.me ? widget.meFgColor : widget.contactFgColor),
               SizedBox(width: 1.2.w()),
               Text(
-                _remaingTime,
+                _remaingTime.toString().padLeft(2, '0'),
                 style: TextStyle(
                   fontSize: 10,
                   color: Colors
