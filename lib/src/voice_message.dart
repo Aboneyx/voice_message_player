@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 // ignore: library_prefixes
 import 'package:just_audio/just_audio.dart' as jsAudio;
 import 'package:voice_message_package/src/contact_noise.dart';
@@ -27,8 +28,12 @@ class VoiceMessage extends StatefulWidget {
     this.played = false,
     this.onPlay,
     this.borderRadius = 8,
+    this.pictureUrl,
+    required this.microphoneIconAsset,
   }) : super(key: key);
 
+  final String? pictureUrl;
+  final String microphoneIconAsset;
   final double? borderRadius;
   final String audioSrc;
   final int noiseCount;
@@ -83,12 +88,27 @@ class _VoiceMessageState extends State<VoiceMessage>
             _playButton(context),
             SizedBox(width: 3.w()),
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(height: 3.w()),
                 _durationWithNoise(context),
               ],
             ),
             SizedBox(width: 2.2.w()),
+            Center(
+              child: Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundImage: NetworkImage(widget.pictureUrl ??
+                        'https://cdn.britannica.com/63/222663-050-58CCA884/Soccer-forward-Cristiano-Ronaldo-2018.jpg'),
+                  ),
+                  Positioned(
+                      left: -5,
+                      bottom: -3,
+                      child: SvgPicture.asset(widget.microphoneIconAsset)),
+                ],
+              ),
+            ),
 
             /// x2 button will be added here.
             // _speed(context),
