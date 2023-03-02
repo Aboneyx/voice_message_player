@@ -94,37 +94,39 @@ class _VoiceMessageState extends State<VoiceMessage>
   }
 
   _playButton(BuildContext context) => InkWell(
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            // color: widget.me ? widget.meFgColor : widget.contactFgColor,
-            color: widget.meFgColor,
-          ),
-          width: 8.w(),
-          height: 8.w(),
-          child: InkWell(
-            onTap: () =>
-                !_audioConfigurationDone ? null : _changePlayingStatus(),
-            child: !_audioConfigurationDone
-                ? Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 10,
-                    height: 0,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 1,
-                      color:
-                          // widget.me ? widget.meFgColor : widget.contactFgColor,
-                          widget.meFgColor,
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              // color: widget.me ? widget.meFgColor : widget.contactFgColor,
+              color: widget.meFgColor,
+            ),
+            width: 8.w(),
+            height: 8.w(),
+            child: InkWell(
+              onTap: () =>
+                  !_audioConfigurationDone ? null : _changePlayingStatus(),
+              child: !_audioConfigurationDone
+                  ? Container(
+                      padding: const EdgeInsets.all(8),
+                      width: 10,
+                      height: 0,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 1,
+                        color:
+                            // widget.me ? widget.meFgColor : widget.contactFgColor,
+                            widget.meFgColor,
+                      ),
+                    )
+                  : Icon(
+                      _isPlaying ? Icons.pause : Icons.play_arrow,
+                      // color: widget.me
+                      // ? widget.mePlayIconColor
+                      // : widget.contactPlayIconColor,
+                      color: widget.mePlayIconColor,
+                      size: 5.w(),
                     ),
-                  )
-                : Icon(
-                    _isPlaying ? Icons.pause : Icons.play_arrow,
-                    // color: widget.me
-                    // ? widget.mePlayIconColor
-                    // : widget.contactPlayIconColor,
-                    color: widget.mePlayIconColor,
-                    size: 5.w(),
-                  ),
+            ),
           ),
         ),
       );
@@ -135,7 +137,9 @@ class _VoiceMessageState extends State<VoiceMessage>
           Row(
             children: [
               _playButton(context),
-              _noise(context),
+              Center(
+                child: _noise(context),
+              ),
             ],
           ),
           SizedBox(height: .3.w()),
