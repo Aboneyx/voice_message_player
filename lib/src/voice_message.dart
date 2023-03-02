@@ -95,18 +95,21 @@ class _VoiceMessageState extends State<VoiceMessage>
             ),
             SizedBox(width: 2.2.w()),
             Center(
-              child: Stack(
-                children: [
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundImage: NetworkImage(widget.pictureUrl ??
-                        'https://cdn.britannica.com/63/222663-050-58CCA884/Soccer-forward-Cristiano-Ronaldo-2018.jpg'),
-                  ),
-                  Positioned(
-                      left: -5,
-                      bottom: -3,
-                      child: SvgPicture.asset(widget.microphoneIconAsset)),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Stack(
+                  children: [
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundImage: NetworkImage(widget.pictureUrl ??
+                          'https://cdn.britannica.com/63/222663-050-58CCA884/Soccer-forward-Cristiano-Ronaldo-2018.jpg'),
+                    ),
+                    Positioned(
+                        left: -5,
+                        bottom: -3,
+                        child: SvgPicture.asset(widget.microphoneIconAsset)),
+                  ],
+                ),
               ),
             ),
 
