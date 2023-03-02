@@ -170,7 +170,7 @@ class _VoiceMessageState extends State<VoiceMessage>
     return Theme(
       data: newTHeme,
       child: SizedBox(
-        height: 6.5.w(),
+        height: 10.5.w(),
         width: noiseWidth,
         child: Stack(
           clipBehavior: Clip.hardEdge,
