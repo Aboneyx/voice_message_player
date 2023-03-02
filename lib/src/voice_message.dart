@@ -80,8 +80,8 @@ class _VoiceMessageState extends State<VoiceMessage>
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            _playButton(context),
-            SizedBox(width: 3.w()),
+            // _playButton(context),
+            // SizedBox(width: 3.w()),
             _durationWithNoise(context),
             SizedBox(width: 2.2.w()),
 
@@ -132,7 +132,12 @@ class _VoiceMessageState extends State<VoiceMessage>
   _durationWithNoise(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _noise(context),
+          Row(
+            children: [
+              _playButton(context),
+              _noise(context),
+            ],
+          ),
           SizedBox(height: .3.w()),
           Row(
             children: [
@@ -150,7 +155,7 @@ class _VoiceMessageState extends State<VoiceMessage>
                   color: Colors
                       .black /*  widget.me ? widget.meFgColor : widget.contactFgColor */,
                 ),
-              )
+              ),
             ],
           ),
         ],
