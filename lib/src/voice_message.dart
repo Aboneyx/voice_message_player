@@ -86,6 +86,7 @@ class _VoiceMessageState extends State<VoiceMessage>
           children: [
             Row(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _playButton(context),
                 SizedBox(width: 3.w()),
@@ -123,6 +124,9 @@ class _VoiceMessageState extends State<VoiceMessage>
             SizedBox(height: .3.w()),
             Row(
               children: [
+                SizedBox(
+                  width: 8.w(),
+                ),
                 if (!widget.played)
                   Widgets.circle(
                     context, 1.w(),
@@ -132,7 +136,7 @@ class _VoiceMessageState extends State<VoiceMessage>
                 SizedBox(width: 1.2.w()),
                 Text(
                   _remaingTime,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 10,
                     color: Colors
                         .black /*  widget.me ? widget.meFgColor : widget.contactFgColor */,
