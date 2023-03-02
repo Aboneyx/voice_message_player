@@ -17,13 +17,15 @@ class ContactNoise extends StatelessWidget {
 
   _singleNoise(BuildContext context) {
     final double height = 5.74.w() * math.Random().nextDouble() + .26.w();
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: .2.w()),
-      width: MediaQuery.of(context).size.width * 0.55,
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(1000),
-        color: Colors.grey,
+    return Expanded(
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: .2.w()),
+        width: .56.w(),
+        height: height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(1000),
+          color: Colors.grey,
+        ),
       ),
     );
   }
