@@ -74,7 +74,7 @@ class _VoiceMessageState extends State<VoiceMessage>
     return Container(
       width: double.infinity,
       // padding: EdgeInsets.symmetric(horizontal: .8.w()),
-      constraints: BoxConstraints(maxWidth: 100.w() * .7),
+      // constraints: BoxConstraints(maxWidth: 100.w() * .7),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(widget.borderRadius ?? 8),
         // color: widget.me ? widget.meBgColor : widget.contactBgColor,
