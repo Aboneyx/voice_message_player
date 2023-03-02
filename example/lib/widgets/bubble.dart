@@ -23,7 +23,7 @@ class Bubble extends StatelessWidget {
           children: [
             _bubble(context),
             SizedBox(width: 2.w),
-            _seenWithTime(context),
+            // _seenWithTime(context),
           ],
         ),
       );
@@ -31,7 +31,7 @@ class Bubble extends StatelessWidget {
   Widget _bubble(BuildContext context) => voice
       ? VoiceMessage(
           audioSrc: 'https://sounds-mp3.com/mp3/0012660.mp3',
-          me: index == 5 ? false : true,
+          // me: index == 5 ? false : true,
         )
       : Container(
           constraints: BoxConstraints(maxWidth: 100.w * .7),
@@ -64,21 +64,21 @@ class Bubble extends StatelessWidget {
           ),
         );
 
-  Widget _seenWithTime(BuildContext context) => Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          if (me)
-            Icon(
-              Icons.done_all_outlined,
-              color: AppColors.pink,
-              size: 3.4.w,
-            ),
-          Text(
-            '1:' '${index + 30}' ' PM',
-            style: const TextStyle(fontSize: 11.8),
-          ),
-          SizedBox(height: .2.w)
-        ],
-      );
+//   Widget _seenWithTime(BuildContext context) => Column(
+//         crossAxisAlignment: CrossAxisAlignment.end,
+//         mainAxisAlignment: MainAxisAlignment.end,
+//         children: [
+//           if (me)
+//             Icon(
+//               Icons.done_all_outlined,
+//               color: AppColors.pink,
+//               size: 3.4.w,
+//             ),
+//           Text(
+//             '1:' '${index + 30}' ' PM',
+//             style: const TextStyle(fontSize: 11.8),
+//           ),
+//           SizedBox(height: .2.w)
+//         ],
+//       );
 }

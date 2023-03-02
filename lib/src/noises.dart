@@ -23,7 +23,7 @@ class Noises extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(1000),
-        color: Colors.white,
+        color: Colors.grey,
       ),
     );
   }
