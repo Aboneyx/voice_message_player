@@ -82,7 +82,12 @@ class _VoiceMessageState extends State<VoiceMessage>
           children: [
             _playButton(context),
             SizedBox(width: 3.w()),
-            _durationWithNoise(context),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _durationWithNoise(context),
+              ],
+            ),
             SizedBox(width: 2.2.w()),
 
             /// x2 button will be added here.
