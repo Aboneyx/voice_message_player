@@ -142,7 +142,7 @@ class _VoiceMessageState extends State<VoiceMessage>
                     widget.me ? widget.meFgColor : widget.contactFgColor),
               SizedBox(width: 1.2.w()),
               Text(
-                _remaingTime.toString().padLeft(2, '0'),
+                _remaingTime,
                 style: TextStyle(
                   fontSize: 10,
                   color: Colors
@@ -250,7 +250,7 @@ class _VoiceMessageState extends State<VoiceMessage>
   void _setDuration() async {
     _audioDuration = await jsAudio.AudioPlayer().setUrl(widget.audioSrc);
     duration = _audioDuration!.inSeconds;
-    maxDurationForSlider = duration + .0;
+    maxDurationForSlider = duration + .00;
 
     /// document will be added
     _controller = AnimationController(
