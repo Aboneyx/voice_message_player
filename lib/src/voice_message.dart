@@ -82,39 +82,64 @@ class _VoiceMessageState extends State<VoiceMessage>
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 4.w(), vertical: 2.8.w()),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
+        child: Column(
           children: [
-            _playButton(context),
-            SizedBox(width: 3.w()),
-            Column(
+            Row(
+              mainAxisSize: MainAxisSize.max,
               children: [
-                SizedBox(height: 3.w()),
-                _durationWithNoise(context),
-              ],
-            ),
-            SizedBox(width: 2.2.w()),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Stack(
+                _playButton(context),
+                SizedBox(width: 3.w()),
+                Column(
                   children: [
-                    CircleAvatar(
-                      radius: 20,
-                      backgroundImage: NetworkImage(widget.pictureUrl ??
-                          'https://cdn.britannica.com/63/222663-050-58CCA884/Soccer-forward-Cristiano-Ronaldo-2018.jpg'),
-                    ),
-                    Positioned(
-                        left: -5,
-                        bottom: -3,
-                        child: SvgPicture.asset(widget.microphoneIconAsset)),
+                    SizedBox(height: 3.w()),
+                    _durationWithNoise(context),
                   ],
                 ),
-              ),
-            ),
+                SizedBox(width: 2.2.w()),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Stack(
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundImage: NetworkImage(widget.pictureUrl ??
+                              'https://cdn.britannica.com/63/222663-050-58CCA884/Soccer-forward-Cristiano-Ronaldo-2018.jpg'),
+                        ),
+                        Positioned(
+                            left: -5,
+                            bottom: -3,
+                            child:
+                                SvgPicture.asset(widget.microphoneIconAsset)),
+                      ],
+                    ),
+                  ),
+                ),
 
-            /// x2 button will be added here.
-            // _speed(context),
+                /// x2 button will be added here.
+                // _speed(context),
+              ],
+            ),
+            SizedBox(height: .3.w()),
+            Row(
+              children: [
+                if (!widget.played)
+                  Widgets.circle(
+                    context, 1.w(),
+                    // widget.me ? widget.meFgColor : widget.contactFgColor
+                    widget.meFgColor,
+                  ),
+                SizedBox(width: 1.2.w()),
+                Text(
+                  _remaingTime,
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors
+                        .black /*  widget.me ? widget.meFgColor : widget.contactFgColor */,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -163,26 +188,6 @@ class _VoiceMessageState extends State<VoiceMessage>
           Row(
             children: [
               _noise(context),
-            ],
-          ),
-          SizedBox(height: .3.w()),
-          Row(
-            children: [
-              if (!widget.played)
-                Widgets.circle(
-                  context, 1.w(),
-                  // widget.me ? widget.meFgColor : widget.contactFgColor
-                  widget.meFgColor,
-                ),
-              SizedBox(width: 1.2.w()),
-              Text(
-                _remaingTime,
-                style: TextStyle(
-                  fontSize: 10,
-                  color: Colors
-                      .black /*  widget.me ? widget.meFgColor : widget.contactFgColor */,
-                ),
-              ),
             ],
           ),
         ],
